@@ -42,6 +42,8 @@ bool HTTPServer::startWaitingConnection() {
 		return false;
 	}
 
+	cout << "Waiting for connection..." << endl;
+
 	acceptor.async_accept(socket,
 		boost::bind(&HTTPServer::connectionReceivedCb, this, boost::asio::placeholders::error));
 
@@ -52,9 +54,6 @@ void HTTPServer::connectionReceivedCb(const boost::system::error_code& error) {
 
 	if (!error) {
 		cout << "Connection received" << endl;
-
-		//socket.async_read_some(boost::asio::buffer(&incomingByte, 1),		// Empezamos a leer
-		//	boost::bind(&HTTPServer::messageReceivedCb, this, boost::asio::placeholders::error));
 
 		boost::asio::async_read_until(socket, buff, "\r\n\r\n",			// Leemos hasta el terminador HTTP
 			boost::bind(&HTTPServer::messageReceivedCb, this,
@@ -88,17 +87,24 @@ void HTTPServer::sendResponse() {
 	cout << "Sending response" << endl;
 
 	time_t now = time(0);
-	time_t exp = now + 99999.0;
+	tm* nowTm = gmtime(&now);
+	char timeNow[256];
+	strftime(timeNow, 256, "%a, %d %b %Y %T GMT", nowTm);	//Ej: Tue, 04 Sep 2018 18:21:49 GMT
 
-	response = "Gracias por conectartre, vuelve pronto!\r\n\r\n";
+	time_t exp = now + 30;
+	tm* expTm = gmtime(&exp);
+	char timeExp[256];
+	strftime(timeExp, 256, "%a, %d %b %Y %T GMT", expTm);	//Ej: Tue, 04 Sep 2018 18:21:49 GMT
+
+	response = "Gracias por conectarte, vuelve pronto!";
 	response = string(	"HTTP/1.1 200 OK \r\n") + 
-						"Date: " + ctime(&now) + "\r" +
-						"Location: 127.0.0.1 \r\n" +
+						"Date: " + timeNow + "\r\n" +
+						"Location: 127.0.0.1/ \r\n" +
 						"Cache-Control: public, max-age=30 \r\n" + 
-						"Expires: " + ctime(&exp) + "\r" +
+						"Expires: " + timeExp + "\r\n" +
 						"Content-Length: " + to_string(response.length()) + " \r\n" +
 						"Content-Type: text/html; charset=iso-8859-1 \r\n" + 
-						response + " \r\n\r\n";
+						response + "\r\n\r\n";
 
 	cout << "Response:" << endl << response << endl;
 
@@ -112,7 +118,7 @@ void HTTPServer::messageSentCb(const boost::system::error_code& error, std::size
 
 	if (!error) {
 		cout << "Response sent" << endl;
-		cout << size << "bytes were sent" << endl;
+		cout << size << " bytes were sent" << endl;
 	}
 	else {
 		cout << "Response failed: " << error.message() << endl;
