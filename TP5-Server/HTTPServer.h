@@ -17,9 +17,13 @@ private:
 
 	void connectionReceivedCb(const boost::system::error_code& error);
 
-	void messageReceivedCb(const boost::system::error_code& error);
-
 	bool startWaitingConnection();
+
+	void messageReceivedCb(const boost::system::error_code& error, std::size_t size);
+
+	void sendResponse();
+
+	void messageSentCb(const boost::system::error_code& error, std::size_t size);
 
 	boost::asio::ip::tcp::acceptor acceptor;
 	boost::asio::ip::tcp::socket socket;
@@ -27,6 +31,7 @@ private:
 	boost::asio::streambuf buff;
 
 	std::string data;
+	std::string response;
 
 	char incomingByte;
 };
