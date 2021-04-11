@@ -60,6 +60,9 @@ void HTTPServer::connectionReceivedCb(const boost::system::error_code& error) {
 				boost::asio::placeholders::error, boost::asio::placeholders::bytes_transferred));
 
 	}
+	else {
+		cout << "Error creating connection: " << error.message() << endl;
+	}
 
 }
 
@@ -70,7 +73,7 @@ void HTTPServer::messageReceivedCb(const boost::system::error_code& error, std::
 		istream is(&buff);			// MAGIA! Guarda tod la data recibida del buffer
 		getline(is, data, {});		// como string
 	
-		cout << size << "bytes received" << endl;
+		cout << size << " bytes received" << endl;
 		cout << "Received: " << data << endl;
 		
 		sendResponse();
@@ -103,7 +106,7 @@ void HTTPServer::sendResponse() {
 						"Cache-Control: public, max-age=30 \r\n" + 
 						"Expires: " + timeExp + "\r\n" +
 						"Content-Length: " + to_string(response.length()) + " \r\n" +
-						"Content-Type: text/html; charset=iso-8859-1 \r\n" + 
+						"Content-Type: text/html; charset=iso-8859-1 \r\n\r\n" + 
 						response + "\r\n\r\n";
 
 	cout << "Response:" << endl << response << endl;
@@ -125,6 +128,8 @@ void HTTPServer::messageSentCb(const boost::system::error_code& error, std::size
 	}
 
 	shutdown();		// Close actual connection
+
+	cout << "Connection closed" << endl;
 
 	startWaitingConnection();	// Wait for the next connection
 }
