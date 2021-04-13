@@ -25,6 +25,8 @@ private:
 
 	void messageSentCb(const boost::system::error_code& error, std::size_t size);
 
+	std::string getHTTPResponse(std::string data);
+
 	boost::asio::ip::tcp::acceptor acceptor;
 	boost::asio::ip::tcp::socket socket;
 

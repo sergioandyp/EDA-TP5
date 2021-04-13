@@ -4,7 +4,7 @@
 
 #include <iostream>
 
-#pragma warning(disable : 4996)
+#pragma warning(disable : 4996)		// Al compilador no le gusta gmtime
 
 using boost::asio::ip::tcp;
 using namespace std;
@@ -75,6 +75,12 @@ void HTTPServer::messageReceivedCb(const boost::system::error_code& error, std::
 	
 		cout << size << " bytes received" << endl;
 		cout << "Received: " << data << endl;
+
+		// Aca se procesa la data
+
+		response = getHTTPResponse(data);
+
+		///
 		
 		sendResponse();
 
