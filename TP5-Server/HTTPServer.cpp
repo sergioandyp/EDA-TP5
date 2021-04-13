@@ -139,3 +139,44 @@ void HTTPServer::messageSentCb(const boost::system::error_code& error, std::size
 
 	startWaitingConnection();	// Wait for the next connection
 }
+
+
+
+std::string HTTPServer::getHTTPResponse(std::string data) {
+
+	std::string method = data.substr(0, 3);
+	std::string path = data.substr(5, data.find("HTTP") - 6);
+	std::string host = data.substr(data.find("Host:") + 6, 9);
+	std::string file_content;
+
+	const char* path_const = path.c_str();
+	ifstream file;
+
+	file.open(path_const, ios::out);
+
+	if (method != "GET" || host != "127.0.0.1" || file.fail()) {
+
+		time_t now = time(0);
+		tm* nowTm = gmtime(&now);
+		char timeNow[256];
+		strftime(timeNow, 256, "%a, %d %b %Y %T GMT", nowTm);    //Ej: Tue, 04 Sep 2018 18:21:00 GMT
+
+		time_t exp = now + 30;
+		tm* expTm = gmtime(&exp);
+		char timeExp[256];
+		strftime(timeExp, 256, "%a, %d %b %Y %T GMT", expTm);    //Ej: Tue, 04 Sep 2018 18:21:30 GMT
+
+		std::string error = string("HTTP/1.1 404 Not Found \r\n") +
+			"Date: " + timeNow + "\r\n" +
+			"Location: 127.0.0.1/ \r\n" +
+			"Cache-Control: public, max-age=30 \r\n" +
+			"Expires: " + timeExp + "\r\n" +
+			"Content-Length: 0 \r\n" +
+			"Content-Type: text/html; charset=iso-8859-1 \r\n\r\n";
+		return error;
+	}
+	while (!file.eof()) {
+		getline(file, file_content);
+	}
+	file.close();
+	return file_contentNew
