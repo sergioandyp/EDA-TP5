@@ -21,18 +21,12 @@
     <ClInclude Include="cmdparser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="cmdinput.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="HTTPClient.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="cmdparser.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="cmdinput.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

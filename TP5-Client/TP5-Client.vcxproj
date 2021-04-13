@@ -139,12 +139,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="cmdinput.h" />
     <ClInclude Include="cmdparser.h" />
     <ClInclude Include="HTTPClient.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="cmdinput.cpp" />
     <ClCompile Include="cmdparser.cpp" />
     <ClCompile Include="HTTPClient.cpp" />
   </ItemGroup>
