@@ -16,7 +16,7 @@ Estructuras de Datos y Algoritmos 1C2021
 #define ERROR_OPT_NUM_NOT_MATCH -6
 #define ERROR_BOTH_ARG_AND_OPT_NUM_NOT_MATCH -7
 
-int parseCmdLine(int argc, char *argv[], pCallback p, void *userData, unsigned short expectedArgs, unsigned short expectedOptions){
+short parseCmdLine(int argc, char *argv[], pCallback p, void *userData, unsigned short expectedArgs, unsigned short expectedOptions){
     unsigned short index = 1, readTotal = 0, argsCounter = 0, optionsCounter = 0;
     short error = 0;
     bool exit = ((argc > 1) ? false : true), enoughArgsForOption = true, inputIsValid, ignoreOptArgNumVerification = false;
