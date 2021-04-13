@@ -76,11 +76,7 @@ void HTTPServer::messageReceivedCb(const boost::system::error_code& error, std::
 		cout << size << " bytes received" << endl;
 		cout << "Received: " << data << endl;
 
-		// Aca se procesa la data
-
 		response = getHTTPResponse(data);
-
-		///
 		
 		sendResponse();
 
@@ -104,16 +100,6 @@ void HTTPServer::sendResponse() {
 	tm* expTm = gmtime(&exp);
 	char timeExp[256];
 	strftime(timeExp, 256, "%a, %d %b %Y %T GMT", expTm);	//Ej: Tue, 04 Sep 2018 18:21:49 GMT
-
-	response = "Gracias por conectarte, vuelve pronto!";
-	response = string(	"HTTP/1.1 200 OK \r\n") + 
-						"Date: " + timeNow + "\r\n" +
-						"Location: 127.0.0.1/ \r\n" +
-						"Cache-Control: public, max-age=30 \r\n" + 
-						"Expires: " + timeExp + "\r\n" +
-						"Content-Length: " + to_string(response.length()) + " \r\n" +
-						"Content-Type: text/html; charset=iso-8859-1 \r\n\r\n" + 
-						response + "\r\n\r\n";
 
 	cout << "Response:" << endl << response << endl;
 
@@ -152,31 +138,47 @@ std::string HTTPServer::getHTTPResponse(std::string data) {
 	const char* path_const = path.c_str();
 	ifstream file;
 
-	file.open(path_const, ios::out);
+	file.open(path_const, ios::out | ios::binary);
+
+	time_t now = time(0);
+	tm* nowTm = gmtime(&now);
+	char timeNow[256];
+	strftime(timeNow, 256, "%a, %d %b %Y %T GMT", nowTm);    //Ej: Tue, 04 Sep 2018 18:21:00 GMT
+
+	time_t exp = now + 30;
+	tm* expTm = gmtime(&exp);
+	char timeExp[256];
+	strftime(timeExp, 256, "%a, %d %b %Y %T GMT", expTm);
+	
+	string response;
 
 	if (method != "GET" || host != "127.0.0.1" || file.fail()) {
 
-		time_t now = time(0);
-		tm* nowTm = gmtime(&now);
-		char timeNow[256];
-		strftime(timeNow, 256, "%a, %d %b %Y %T GMT", nowTm);    //Ej: Tue, 04 Sep 2018 18:21:00 GMT
-
-		time_t exp = now + 30;
-		tm* expTm = gmtime(&exp);
-		char timeExp[256];
-		strftime(timeExp, 256, "%a, %d %b %Y %T GMT", expTm);    //Ej: Tue, 04 Sep 2018 18:21:30 GMT
-
-		std::string error = string("HTTP/1.1 404 Not Found \r\n") +
+		response = string("HTTP/1.1 404 Not Found \r\n") +
 			"Date: " + timeNow + "\r\n" +
 			"Location: 127.0.0.1/ \r\n" +
 			"Cache-Control: public, max-age=30 \r\n" +
 			"Expires: " + timeExp + "\r\n" +
 			"Content-Length: 0 \r\n" +
-			"Content-Type: text/html; charset=iso-8859-1 \r\n\r\n";
-		return error;
+			"Content-Type: text/html; charset=iso-8859-1 \r\n\r\n";;
 	}
-	while (!file.eof()) {
-		getline(file, file_content);
+	else {
+		string temp;
+		while (!file.eof()) {
+			getline(file, temp);
+			file_content += temp;
+		}
+
+		response = string("HTTP/1.1 200 OK \r\n") +
+			"Date: " + timeNow + "\r\n" +
+			"Location: 127.0.0.1/ \r\n" +
+			"Cache-Control: public, max-age=30 \r\n" +
+			"Expires: " + timeExp + "\r\n" +
+			"Content-Length: " + to_string(file_content.length()) + " \r\n" +
+			"Content-Type: text/html; charset=iso-8859-1 \r\n\r\n" +
+			file_content + "\r\n\r\n";
 	}
+
 	file.close();
-	return file_contentNew
+	return response;
+}
