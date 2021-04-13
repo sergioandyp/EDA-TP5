@@ -2,6 +2,7 @@
 #define _HTTP_S_H_
 
 #include <boost/asio.hpp>
+#include <fstream>
 
 class HTTPServer {
 
