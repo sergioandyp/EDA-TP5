@@ -19,7 +19,7 @@ User-defined Callback for data processing (key, value, command line value for ke
 * The function must return 0 if an argument error occurred, and 1 if there was no error
 */
 
-int parseCmdLine(int argc, char *argv[], pCallback p, void *userData, unsigned short expectedArgs, unsigned short expectedOptions);
+short parseCmdLine(int argc, char *argv[], pCallback p, void *userData, unsigned short expectedArgs, unsigned short expectedOptions);
 /*
 Command line parser.
 
@@ -43,7 +43,7 @@ parseCmdLine returns:
 -5 if the number of arguments found does not match the expected value (expectedArgs).
 -6 if the number of options found does not match the expected value (expectedOptions).
 -7 if the two previous errors happen at the same time
-else: number of options (key + value) + number of args
+ELSE: number of options (key + value) + number of args
 */
 
 #endif /*PARSER_H*/
