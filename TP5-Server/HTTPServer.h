@@ -36,7 +36,6 @@ private:
 	std::string data;
 	std::string response;
 
-	char incomingByte;
 };
 
 #endif	// _HTTP_S_H_

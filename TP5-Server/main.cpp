@@ -10,8 +10,6 @@ int main() {
 
 	HTTPServer server(context, 80);
 
-	server.shutdown();
-
 	if (!server.start()) {
 		cout << "Error, el server no se pudo iniciar" << endl;
 		return 0;
