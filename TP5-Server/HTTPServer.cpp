@@ -137,9 +137,9 @@ string HTTPServer::getHTTPResponse(std::string data) {
 	//host = data.substr(data.find("Host:") + 6, 9);
 	string file_content;
 
-	cout << endl << endl << "METHOD: " << method << endl;
-	cout << endl << endl << "PATH: " << path << endl;
-	cout << endl << endl << "HOST: " << host << endl << endl;
+	//cout << endl << endl << "METHOD: " << method << endl;
+	//cout << endl << endl << "PATH: " << path << endl;
+	//cout << endl << endl << "HOST: " << host << endl << endl;
 
 
 	//const char* path_const = path.c_str();
