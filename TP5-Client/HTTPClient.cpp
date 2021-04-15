@@ -23,15 +23,19 @@ int client(int argc, char* argv[]) {
 	case -4: case -5: case -6: case -7:
 		std::cout << "Error parsing file path. Input must be only 1 parameter." << std::endl;
 		return PARSER_EXPECTED_ERROR;
+    case -8:
+        std::cout << "Error parsing file path. No input received." << std::endl;
+        return PARSER_EXPECTED_ERROR;
+    case -3: default:
+        std::cout << "Error parsing file path. Unexpected parser error." << std::endl;
+        return PARSER_UNEXPECTED_ERROR;
 	case 1:
 		std::cout << "Parsing successful." << std::endl;
 		break;
-	case -3: default:
-		std::cout << "Error parsing file path. Unexpected parser error." << std::endl;
-		return PARSER_UNEXPECTED_ERROR;
 	}
 
 	free(filePath);
+	return EXIT_SUCCESS;
 }
 
 int getFilePathCallback(char* key, char* value, void* userData) {
@@ -43,5 +47,9 @@ int getFilePathCallback(char* key, char* value, void* userData) {
 	return 1;
 }
 
+int main (int argc, char ** argv){
+    client(argc, argv);
+    return 0;
+}
 
 

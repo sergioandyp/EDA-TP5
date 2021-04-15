@@ -5,7 +5,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <string>
-#include <boost/asio.hpp>
+#include <curl/curl.h>
 #include "cmdparser.h"
 
 //ERROR CODES

@@ -43,6 +43,7 @@ parseCmdLine returns:
 -5 if the number of arguments found does not match the expected value (expectedArgs).
 -6 if the number of options found does not match the expected value (expectedOptions).
 -7 if the two previous errors happen at the same time
+-8 if the parser did not receive any input (argv only contains the executable path)
 ELSE: number of options (key + value) + number of args
 */
 
