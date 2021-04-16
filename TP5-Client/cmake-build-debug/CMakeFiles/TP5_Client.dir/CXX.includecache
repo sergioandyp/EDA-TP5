@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/juani/Desktop/EDA-TP5/TP5-Client/HTTPClient.cpp
+HTTPClient.h
+/Users/juani/Desktop/EDA-TP5/TP5-Client/HTTPClient.h
+
+/Users/juani/Desktop/EDA-TP5/TP5-Client/HTTPClient.h
+iostream
+-
+string
+-
+fstream
+-
+curl/curl.h
+-
+

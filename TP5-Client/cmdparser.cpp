@@ -23,7 +23,7 @@ short parseCmdLine(int argc, char *argv[], pCallback p, void *userData, unsigned
     bool exit = false, enoughArgsForOption = true, inputIsValid, ignoreOptArgNumVerification = false;
     char *arg1, *arg2;
     //INITIAL VERIFICATIONS
-    if (!(argc > 1))
+    if (argc <= 1)
         return ERROR_NO_INPUT;
     if ((expectedArgs == 0) && (expectedOptions == 0))
         ignoreOptArgNumVerification = true;
@@ -64,7 +64,7 @@ short parseCmdLine(int argc, char *argv[], pCallback p, void *userData, unsigned
         }
         else{                                   //Parameters (not starting in '-')
             argsCounter++;
-            inputIsValid = (bool) p(NULL, arg1, userData);   //userData is unmodified
+            inputIsValid = (bool) p(nullptr, arg1, userData);   //userData is unmodified
         }
         if (!inputIsValid){
             error = ERROR_ARG_IS_NOT_VALID;
