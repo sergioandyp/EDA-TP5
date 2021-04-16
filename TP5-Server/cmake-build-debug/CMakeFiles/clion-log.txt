@@ -1,0 +1,4 @@
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/juani/Desktop/EDA-TP5/TP5-Server
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Users/juani/Desktop/EDA-TP5/TP5-Server/cmake-build-debug

@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/juani/Desktop/EDA-TP5/TP5-Server/HTTPServer.cpp
+HTTPServer.h
+/Users/juani/Desktop/EDA-TP5/TP5-Server/HTTPServer.h
+boost/bind/bind.hpp
+-
+iostream
+-
+
+/Users/juani/Desktop/EDA-TP5/TP5-Server/HTTPServer.h
+boost/asio.hpp
+-
+fstream
+-
+
+/Users/juani/Desktop/EDA-TP5/TP5-Server/main.cpp
+iostream
+-
+HTTPServer.h
+/Users/juani/Desktop/EDA-TP5/TP5-Server/HTTPServer.h
+
