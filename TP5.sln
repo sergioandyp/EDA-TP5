@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TP5-Server", "TP5-Server\TP
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TP5-Client", "TP5-Client\TP5-Client.vcxproj", "{A1251573-1554-4805-908F-D274E4866FBD}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TP-ClientV2", "TP-ClientV2\TP-ClientV2.vcxproj", "{A937A13B-1AE0-4F5B-8C7D-7289143B9445}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{A1251573-1554-4805-908F-D274E4866FBD}.Release|x64.Build.0 = Release|x64
 		{A1251573-1554-4805-908F-D274E4866FBD}.Release|x86.ActiveCfg = Release|Win32
 		{A1251573-1554-4805-908F-D274E4866FBD}.Release|x86.Build.0 = Release|Win32
+		{A937A13B-1AE0-4F5B-8C7D-7289143B9445}.Debug|x64.ActiveCfg = Debug|x64
+		{A937A13B-1AE0-4F5B-8C7D-7289143B9445}.Debug|x64.Build.0 = Debug|x64
+		{A937A13B-1AE0-4F5B-8C7D-7289143B9445}.Debug|x86.ActiveCfg = Debug|Win32
+		{A937A13B-1AE0-4F5B-8C7D-7289143B9445}.Debug|x86.Build.0 = Debug|Win32
+		{A937A13B-1AE0-4F5B-8C7D-7289143B9445}.Release|x64.ActiveCfg = Release|x64
+		{A937A13B-1AE0-4F5B-8C7D-7289143B9445}.Release|x64.Build.0 = Release|x64
+		{A937A13B-1AE0-4F5B-8C7D-7289143B9445}.Release|x86.ActiveCfg = Release|Win32
+		{A937A13B-1AE0-4F5B-8C7D-7289143B9445}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
