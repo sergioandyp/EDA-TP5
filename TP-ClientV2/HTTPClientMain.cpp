@@ -8,6 +8,8 @@
 #include "cmdparser.h"
 #include "HTTPClient.h"
 
+#pragma warning(disable : 4996)		// Al compilador no le gusta strcpy
+
 //CONSTANTS
 #define PATH_MAX_LEN 150	//Maximum length (in chars) of the file path (including the null terminator)
 

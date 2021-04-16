@@ -18,6 +18,15 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="cmdparser.cpp" />
+    <ClCompile Include="HTTPClient.cpp" />
+    <ClCompile Include="HTTPClientMain.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="cmdparser.h" />
+    <ClInclude Include="HTTPClient.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -138,14 +147,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="..\TP5-Client\cmdparser.cpp" />
-    <ClCompile Include="..\TP5-Client\HTTPClient.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\TP5-Client\cmdparser.h" />
-    <ClInclude Include="..\TP5-Client\HTTPClient.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

@@ -129,20 +129,13 @@ string HTTPServer::getHTTPResponse(std::string data) {
 	string method = data.substr(0, data.find(" "));
 	string path = data.substr(data.find(" /")+2);
 	path = path.substr(0, path.find(" "));
-	//path = data.substr(5, data.find("HTTP") - 6);
 	
 	string host = data.substr(data.find("Host: ")+6);
 	host.replace(host.find("\r"), 1, " ");
 	host = host.substr(0, host.find(" "));
-	//host = data.substr(data.find("Host:") + 6, 9);
+
 	string file_content;
 
-	//cout << endl << endl << "METHOD: " << method << endl;
-	//cout << endl << endl << "PATH: " << path << endl;
-	//cout << endl << endl << "HOST: " << host << endl << endl;
-
-
-	//const char* path_const = path.c_str();
 	ifstream file;
 
 	file.open(path, ios::out | ios::binary);
@@ -169,11 +162,6 @@ string HTTPServer::getHTTPResponse(std::string data) {
 							"Content-Type: text/html; charset=iso-8859-1 \r\n\r\n";;
 	}
 	else {
-		/*string temp;
-		while (!file.eof()) {
-			getline(file, temp);
-			file_content += temp;
-		}*/
 
 		getline(file, file_content, {});	// Guarda todo el contnido del archivo como string
 

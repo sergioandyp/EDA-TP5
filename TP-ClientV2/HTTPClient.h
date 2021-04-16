@@ -15,7 +15,6 @@ public:
 
 private:
     std::string requestURL;                 //URL path to request
-    //std::ifstream file;                   //File to save server response
 };
 
 #endif /*HTTPCLIENT_H*/

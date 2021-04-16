@@ -15,18 +15,21 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\TP5-Client\cmdparser.cpp">
+    <ClCompile Include="cmdparser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\TP5-Client\HTTPClient.cpp">
+    <ClCompile Include="HTTPClient.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HTTPClientMain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\TP5-Client\cmdparser.h">
+    <ClInclude Include="cmdparser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\TP5-Client\HTTPClient.h">
+    <ClInclude Include="HTTPClient.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

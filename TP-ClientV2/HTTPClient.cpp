@@ -5,6 +5,9 @@
 
 #include "HTTPClient.h"
 
+#pragma warning(disable : 4996)		// Al compilador no le gusta fopen
+
+
 //CLASS CONSTRUCTOR
 HTTPClient::HTTPClient(std::string& requestURL_) : requestURL(requestURL_) {
 }
